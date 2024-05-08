@@ -1,0 +1,18 @@
+abbiamo il progetto quando costruiamo l'immagine vengono copiate e installate le dispendeze nel container
+poi lo avviamo nella porta 4200
+però ogni volta che facciamo una modifica dovremmo sempre rifare la build (su docker)
+però con docker compose risolviamo tale problema usando un binded-volume dove in pratica condividiamo una parte di disco 
+tra la cartella sul sistema operativo che stiamo utilizzando e il container
+
+domande
+1.Per quale ragione viene copiato prima il file package.json e fatto npm install e successivamente tutta la cartella dell'app?
+2.Per quale ragione la versione dell'Angular Cli tra sviluppo locale e container deve corrispondere?
+3.Assicurati di saper spiegare questa immagine
+
+
+1.perche nel package.json sono contenuti le cache delle dipendenze per evitare di rieseguire npm i,
+poi con npm install si installano tutte le dispendeze contenute nel package.json,
+e infine viene copiata tutta la cartella restante per l'esecuzione dell'applicazione
+2.Perche altrimenti le due versioni andrebbero in conflitto
+3.abbiamo reso la cartella binded-volume cioè ogni volta che modificheremo il file 
+non dovremmo fare ogni volta la build del container per aggiornare la nostra pagina
