@@ -4,6 +4,15 @@ però ogni volta che facciamo una modifica dovremmo sempre rifare la build (su d
 però con docker compose risolviamo tale problema usando un binded-volume dove in pratica condividiamo una parte di disco 
 tra la cartella sul sistema operativo che stiamo utilizzando e il container
 
+dopo aver aggiunto docker compose quando dobbiamo avviare il progetto avviamo solo docker compose
+che a sua volta avvierà il dockerfile
+______________________________________________________________________________________
+
+dopo aggiungamo la cartella del server
+dove gli aggiungamo il docker file e il requirements (dove ci saranno tutte le installazioni da fare)
+poi come sempre aggiungamo la parte del server nel docker compose(per tenerlo sempre aggiornato senza rifare sempre la build) 
+
+
 domande
 1.Per quale ragione viene copiato prima il file package.json e fatto npm install e successivamente tutta la cartella dell'app?
 2.Per quale ragione la versione dell'Angular Cli tra sviluppo locale e container deve corrispondere?
