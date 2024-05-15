@@ -1,7 +1,7 @@
 abbiamo il progetto quando costruiamo l'immagine vengono copiate e installate le dispendeze nel container
 poi lo avviamo nella porta 4200
 però ogni volta che facciamo una modifica dovremmo sempre rifare la build (su docker)
-però con docker compose risolviamo tale problema usando un binded-volume dove in pratica condividiamo una parte di disco 
+però con docker compose(la parte di node) risolviamo tale problema usando un binded-volume dove in pratica condividiamo una parte di disco 
 tra la cartella sul sistema operativo che stiamo utilizzando e il container
 
 dopo aver aggiunto docker compose quando dobbiamo avviare il progetto avviamo solo docker compose
@@ -10,7 +10,10 @@ ________________________________________________________________________________
 
 dopo aggiungamo la cartella del server
 dove gli aggiungamo il docker file e il requirements (dove ci saranno tutte le installazioni da fare)
-poi come sempre aggiungamo la parte del server nel docker compose(per tenerlo sempre aggiornato senza rifare sempre la build) 
+poi come sempre aggiungamo la parte del server nel docker compose(cosi da poter avviare il dockerfile all'interno della cartella del
+server installando il tutto)
+poi cambiando il dockerfile(server) inserendo un'immagine con pythone e node ci permette di modificare la parte del server senza riavviare
+il container 
 
 
 domande
