@@ -1,14 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'client';
+  data!: any;
+  constructor(private http: HttpClient)
+  {
+    this.http.get("https://5000-tolentinomi-backbnproje-43fq2etylt9.ws-eu111.gitpod.io/simple_json")
+    .subscribe(
+      (data) => this.data = data
+    )
+   
+  }
 
 }

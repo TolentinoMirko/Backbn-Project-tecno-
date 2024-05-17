@@ -6,7 +6,7 @@ tra la cartella sul sistema operativo che stiamo utilizzando e il container
 
 dopo aver aggiunto docker compose quando dobbiamo avviare il progetto avviamo solo docker compose
 che a sua volta avvierà il dockerfile
-______________________________________________________________________________________
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 dopo aggiungamo la cartella del server
 dove gli aggiungamo il docker file e il requirements (dove ci saranno tutte le installazioni da fare)
@@ -14,8 +14,16 @@ poi come sempre aggiungamo la parte del server nel docker compose(cosi da poter 
 server installando il tutto)
 poi cambiando il dockerfile(server) inserendo un'immagine con pythone e node ci permette di modificare la parte del server senza riavviare
 il container 
+poi facciamo una richiesta http dal client al server per ottenere il json nella route del server (le porte di entrambi devono essere pubblici per 
+non avere problemi con le richieste CORS)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
+poi aggiungiamo una cartella mongo-server con un js all'interno che crea un db animali e inserisce 
+il json con tutti gli animali
+e aggiungiamo la parte di mongo-db sul docker compose
+______________________________________________________________________________________
 
+01
 domande
 1.Per quale ragione viene copiato prima il file package.json e fatto npm install e successivamente tutta la cartella dell'app?
 2.Per quale ragione la versione dell'Angular Cli tra sviluppo locale e container deve corrispondere?
@@ -28,3 +36,14 @@ e infine viene copiata tutta la cartella restante per l'esecuzione dell'applicaz
 2.Perche altrimenti le due versioni andrebbero in conflitto
 3.abbiamo reso la cartella binded-volume cioè ogni volta che modificheremo il file 
 non dovremmo fare ogni volta la build del container per aggiornare la nostra pagina
+
+02
+1.Quale immagine di partenza hai usato per Python (clausula FROM)
+2.Per quale ragione è possibile pigare un container tramite il suo nome?
+3.A cosa serve la clausula -it del comando exec?
+4.Per quale ragione non è possibile usare l'host name del server per fare una chiamata tra client e server all'interno della rete Docker
+
+1.ho utilizzato l'immagine nikolaik/python-nodejs che aveva sia python che nodejs
+2. perchè docker crea automaticamente una rete tra tutti i servizi dello stesso docker-compose file.
+3.per mantenere aperto lo shell e allocargli uno pseudo TTY
+4.perchè, li non ci sono i dati interessati
