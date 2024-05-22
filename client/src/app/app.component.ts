@@ -11,7 +11,7 @@ export class AppComponent {
   data!: any;
   constructor(private http: HttpClient)
   {
-    this.http.get("https://5000-tolentinomi-backbnproje-43fq2etylt9.ws-eu111.gitpod.io/simple_json")
+    this.http.get("https://5000-tolentinomi-backbnproje-tjdmod6cghq.ws-eu114.gitpod.io/simple_json")
     .subscribe(
       (data) => this.data = data
     )
