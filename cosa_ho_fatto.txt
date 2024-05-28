@@ -21,6 +21,11 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 poi aggiungiamo una cartella mongo-server con un js all'interno che crea un db animali e inserisce 
 il json con tutti gli animali
 e aggiungiamo la parte di mongo-db sul docker compose
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+effettuiamo il collegamento server-mongodb con pymongo
+e per evitare di mettere le credenziali per entrare nel db tramite shell lo inseriamo nel docker compose
+nel py inseriamo la route per prendere le credenziali per il db 
 ______________________________________________________________________________________
 
 01
@@ -47,3 +52,18 @@ non dovremmo fare ogni volta la build del container per aggiornare la nostra pag
 2. perchè docker crea automaticamente una rete tra tutti i servizi dello stesso docker-compose file.
 3.per mantenere aperto lo shell e allocargli uno pseudo TTY
 4.perchè, li non ci sono i dati interessati
+
+03
+1.A cosa servono e come si dichiarano le variabili d'ambiente in un docker compose file?
+2.Quale libreria viene utilizzata in python per recuperare le variabili d'ambiente?
+3.Qule notazione viene usata in python per recuperare una specifica variabile d'ambiente?
+4.Come si cambia l'host-name di un container all'interno di una rete docker?
+5.A cosa serve il binded volume creato nel containe MongoDB?
+
+1.servono per accedere al db e si dichiarano con environment
+2.viene utilizzata os
+3.os.environ
+4.
+5.
+
+
