@@ -34,3 +34,9 @@ export interface Animal {
   name: string;
   type: any;
 }
+
+httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+sendNewAnimal(animal : Animal) : Observable<Animal>
+{
+  return this.http.post<Animal>(environment.baseUrlServer + 'newAnimal',animal,this.httpOptions)
+}

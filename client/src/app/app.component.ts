@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { Animal, VettAnimal } from './animals.service';
 import { AnimalsService } from './animals.service';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,7 @@ export class AppComponent {
   title = 'client';
   data = new Array<Animal>();
   //Mi faccio iniettare l'animal servce
+
   constructor(private animalService : AnimalsService)
   {
     //Mi sottoscrivo al servizio
@@ -20,5 +21,28 @@ export class AppComponent {
       (data: VettAnimal)=>{this.data = data['animals']}
     )
   }
+  form = new FormGroup({
+    "name": new FormControl(),
+    "type": new FormControl(),
+  });
 
-}
+
+  onSubmit() {
+    console.log("reactive form submitted");
+    console.log(this.form.controls['name'].value);
+    console.log(this.form.controls['type'].value);
+    let a : Animal = {
+      "id": '0',
+      "name":this.form.controls['name'].value,
+      "type": this.form.controls['type'].value
+    };
+
+    //Quando ricevo una risposta dal server aggiorno l'id dell'animale e lo invio al vettore data
+    this.animalService.sendNewAnimal(a).subscribe(
+      (data)=>{
+        console.log(data);
+        a.id = data['id'];
+        this.data.push(a);
+      }
+    )
+  }
