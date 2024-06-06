@@ -1,8 +1,8 @@
 
 import { Component } from '@angular/core';
-import { Animal, VettAnimal } from './animals.service';
+import { FormControl, FormGroup} from '@angular/forms';
 import { AnimalsService } from './animals.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { Animal, VettAnimal } from './animals.service';
 
 @Component({
   selector: 'app-root',
@@ -12,20 +12,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 export class AppComponent {
   title = 'client';
   data = new Array<Animal>();
-  //Mi faccio iniettare l'animal servce
-
-  constructor(private animalService : AnimalsService)
-  {
-    //Mi sottoscrivo al servizio
+  constructor(private animalService: AnimalsService) {
     this.animalService.getAnimals().subscribe(
-      (data: VettAnimal)=>{this.data = data['animals']}
+      (data: VettAnimal) => { this.data = data['animals'] }
     )
   }
+
+  //Per la reactive form creo due proprietà che conterranno i valori delle caselle di testo
   form = new FormGroup({
     "name": new FormControl(),
     "type": new FormControl(),
   });
-
 
   onSubmit() {
     console.log("reactive form submitted");
@@ -46,3 +43,4 @@ export class AppComponent {
       }
     )
   }
+}
